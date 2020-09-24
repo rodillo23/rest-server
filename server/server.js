@@ -9,8 +9,11 @@ const bodyParser = require('body-parser')
 
 //middlewares-> funciones que se disparan cada que pasa por aqui el codigo
 app.use(bodyParser.urlencoded({extended: false}))
+
 app.use(bodyParser.json())
-app.use(require('./routes/usuario'))
+
+//configuracion global de rutas
+app.use(require('./routes/index'))
 
 mongoose.connect(
     process.env.URLDB, 

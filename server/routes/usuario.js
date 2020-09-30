@@ -106,4 +106,5 @@ app.delete('/usuario/:id', [verificaToken, verificaAdmin_Role], (req, res) => {
     })
 })
 
+
 module.exports = app

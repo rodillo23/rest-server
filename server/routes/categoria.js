@@ -9,6 +9,7 @@ const app = express()
 app.get('/categoria', verificaToken, (req, res) => {
     
     let usuarioConsulta = req.usuario
+    let fecha = new Date()
 
     Categoria.find({})
     .populate('usuario', 'nombre email')
@@ -27,7 +28,8 @@ app.get('/categoria', verificaToken, (req, res) => {
                 ok: true,
                 categorias : categoriasDB,
                 registros : conteo,
-                solicito : usuarioConsulta
+                solicito : usuarioConsulta,
+                fecha : fecha
             })
         })
     })

@@ -5,7 +5,7 @@ const Producto = require('../models/producto')
 
 const app = express()
 
-app.get('/producto', verificaToken, (req, res) => {
+app.get('/producto', (req, res) => {
     Producto.find({})
     .skip(0)
     .limit(5)

@@ -1,0 +1,2 @@
+Hola desde vim, aprendiendo a manejar, correctamente la,
+linea de comandos, en ubuntu, a trabajar,

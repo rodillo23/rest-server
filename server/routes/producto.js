@@ -60,6 +60,38 @@ app.get('/producto/:id', verificaToken, (req, res) => {
     })
 })
 
+app.get('/producto/categorias/:id', (req, res) => {
+
+    let id = req.params.id
+
+    Producto.find({categoria : {_id : id}}, (err, productoDB) => {
+        if (err) {
+            return res.status(500).json({
+                ok : false,
+                message : 'No hay registros en la BD'
+            })
+        }
+        
+        console.log(productoDB)
+
+        if(productoDB.length == 0){
+            return res.status(400).json({
+                ok : false,
+                message : 'No se encontraron registros en la BD'
+            })
+        }
+
+        Producto.countDocuments({categoria : {_id : id}}, (err, conteo) =>{
+            res.json({
+                ok : true,
+                producto : productoDB,
+                registros : conteo
+            })
+        })
+        
+    })
+})
+
 
 app.post('/producto', verificaToken, (req, res) => {
     let usuario = req.usuario
